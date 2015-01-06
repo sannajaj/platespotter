@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Platespotting</string>
+
+    <string name="title_home">Hem</string>
+    <string name="title_history">Historik</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="background_image_description">Background image of mustang</string>
+
+    <string name="spotted_button_text">Jag har sett %03d</string>
+
+</resources>

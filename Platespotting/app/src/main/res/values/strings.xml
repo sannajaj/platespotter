@@ -4,12 +4,17 @@
     <string name="app_name">Platespotting</string>
 
     <string name="title_home">Hem</string>
-    <string name="title_history">Historik</string>
+    <string name="title_list">Hittade lista</string>
+    <string name="title_map">Hittade karta</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="background_image_description">Background image of mustang</string>
 
     <string name="spotted_button_text">Jag har sett %03d</string>
+
+    <string name="more_format" formatted="false">1%s\n2%s 3%s 4%s som var 5%s.</string>
+    <string name="parked">parkerad</string>
+    <string name="not_parked">på väg</string>
 
 </resources>

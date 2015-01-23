@@ -18,4 +18,10 @@ public class DatabaseHandler {
         cursor.moveToFirst();
         return cursor.getCount();
     }
+
+    public Cursor getPlates() {
+        SQLiteDatabase database = databaseHelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * from " + SPOTTED_TABLE_NAME, null);
+        return cursor;
+    }
 }

@@ -1,6 +1,7 @@
 package se.caleklint.platespotting;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import se.caleklint.platespotting.database.DatabaseHandler;
@@ -47,8 +49,10 @@ public class Home extends ActionBarActivity
                 setTitle(R.string.title_home);
                 break;
             case 2:
-                setTitle(R.string.title_history);
+                setTitle(R.string.title_list);
                 break;
+            case 3:
+                setTitle(R.string.title_map);
         }
     }
 
@@ -85,7 +89,9 @@ public class Home extends ActionBarActivity
                 case 1:
                     return createHomeView(inflater, container);
                 case 2:
-                    return createHistoryView(inflater, container);
+                    return createListView(inflater, container);
+                case 3:
+                    return createMapView(inflater, container);
             }
             return null;
         }
@@ -104,11 +110,24 @@ public class Home extends ActionBarActivity
             int nextPlate = databaseHandler.getNumberOfStoredPlates() +1;
             String nextPlateString = String.format(getString(R.string.spotted_button_text), nextPlate);
             spottedButton.setText(nextPlateString);
+            spottedButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent detailIntent = new Intent(getActivity(), PlateDetailActivity.class);
+                }
+            });
             return rootView;
         }
 
-        private View createHistoryView(LayoutInflater inflater, ViewGroup container) {
-            View rootView = inflater.inflate(R.layout.fragment_history, container, false);
+        private View createListView(LayoutInflater inflater, ViewGroup container) {
+            View rootView = inflater.inflate(R.layout.fragment_list, container, false);
+            ListView listView = (ListView) rootView.findViewById(R.id.listView);
+            listView.setAdapter(new PlateListAdapter(getActivity()));
+            return rootView;
+        }
+
+        private View createMapView(LayoutInflater inflater, ViewGroup container) {
+            View rootView = inflater.inflate(R.layout.map_fragment, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.spotted_button);
             DatabaseHandler databaseHandler = new DatabaseHandler(getActivity());
             textView.setText(String.valueOf(databaseHandler.getNumberOfStoredPlates()));
